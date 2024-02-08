@@ -321,6 +321,7 @@ impl DBusNetworkManager {
             let mut security: VariantMap = HashMap::new();
             add_str(&mut security, "key-mgmt", "wpa-psk");
             add_str(&mut security, "psk", verify_ascii_password(password)?);
+            add_val(&mut security, "proto", vec!["rsn".to_string()]);
 
             settings.insert("802-11-wireless-security".to_string(), security);
         }
